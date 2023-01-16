@@ -52,6 +52,7 @@
                           <td><?= $book['penulis'] ?></td>
                           <td>
                             <a href="<?= base_url('buku/edit/') . $book['id'] ?>" class="badge badge-sm badge-info badge-pill">edit</a>
+                            <a href="#!" data-toggle="modal" data-target="#hapusModal" class="badge badge-sm badge-danger badge-pill" onclick="hapusData(this)" data-id="<?= $book['id'] ?>">hapus</a>
                           </td>
                         </tr>
                       <?php endforeach; ?>
@@ -67,8 +68,37 @@
   </section>
 </div>
 
-<script>
-  // const getNameOfMember = () => {
+<!-- Modal -->
+<div class="modal fade" id="hapusModal" tabindex="-1" aria-labelledby="hapusModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h5 class="modal-title" id="hapusModalLabel">Hapus Buku</h5>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <form action="<?= base_url('buku/delete') ?>" method="post">
+        <div class="modal-body">
+          <input type="hidden" name="id" id="delete-id">
+          <p>Apakah anda yakin ingin menghapus data buku ini ?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Tidak</button>
+          <button type="submit" class="btn btn-primary">Ya</button>
+        </div>
+      </form>
+    </div>
+  </div>
+</div>
 
-  // }
+
+<script>
+  const hapusData = (target) => {
+    const id = target.getAttribute('data-id');
+
+    console.log(id);
+
+    document.getElementById('delete-id').value = id;
+  }
 </script>

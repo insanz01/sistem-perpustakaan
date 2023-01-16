@@ -17,7 +17,7 @@ class BookController extends CI_Controller
     $this->load->view('templates/panel/header');
     $this->load->view('templates/panel/sidebar');
     $this->load->view('templates/panel/navbar');
-    $this->load->view('app/book/index', $data);
+    $this->load->view('app/buku/index', $data);
     $this->load->view('templates/panel/footer');
   }
 
@@ -26,13 +26,39 @@ class BookController extends CI_Controller
     $this->load->view('templates/panel/header');
     $this->load->view('templates/panel/sidebar');
     $this->load->view('templates/panel/navbar');
-    $this->load->view('app/book/add');
+    $this->load->view('app/buku/add');
     $this->load->view('templates/panel/footer');
   }
 
   public function do_add_book()
   {
-    $data = $this->input->post();
+    $data = [
+      'ISBN' => $this->input->post('ISBN'),
+      'judul' => $this->input->post('judul'),
+      'deskripsi' => $this->input->post('deskripsi'),
+      'penulis' => $this->input->post('penulis')
+    ];
+
+    $config['upload_path']          = './uploads/';
+    $config['allowed_types']        = 'gif|jpg|png';
+    // $config['max_size']             = 100;
+    // $config['max_width']            = 1024;
+    // $config['max_height']           = 768;
+
+    $this->load->library('upload', $config);
+
+    if ( ! $this->upload->do_upload('gambar'))
+    {
+      $error = array('error' => $this->upload->display_errors());
+
+      var_dump($error); die;
+    }
+    else
+    {
+      $imageData = array('upload_data' => $this->upload->data());
+
+      $data['gambar'] = $imageData['upload_data']['file_name'];
+    }
 
     if ($this->book_m->save_book($data)) {
       $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Berhasil menambahkan data book</div>');
@@ -40,7 +66,7 @@ class BookController extends CI_Controller
       $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Gagal menambahkan data book</div>');
     }
 
-    redirect('book');
+    redirect('buku');
   }
 
   public function edit_book()
@@ -50,7 +76,7 @@ class BookController extends CI_Controller
     $this->load->view('templates/panel/header');
     $this->load->view('templates/panel/sidebar');
     $this->load->view('templates/panel/navbar');
-    $this->load->view('app/book/edit', $data);
+    $this->load->view('app/buku/edit', $data);
     $this->load->view('templates/panel/footer');
   }
 
@@ -71,7 +97,7 @@ class BookController extends CI_Controller
       $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Gagal mengubah data book</div>');
     }
 
-    redirect('book');
+    redirect('buku');
   }
 
   public function delete_book()
@@ -84,6 +110,6 @@ class BookController extends CI_Controller
       $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Gagal menghapus data book</div>');
     }
 
-    redirect('book');
+    redirect('buku');
   }
 }

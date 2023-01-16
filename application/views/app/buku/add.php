@@ -25,7 +25,7 @@
         <div class="col-12">
           <div class="card">
             <div class="card-body">
-              <form action="<?= base_url('buku/do_add') ?>" method="post">
+              <form action="<?= base_url('buku/do_add') ?>" method="post" enctype="multipart/form-data">
                 <div class="form-group">
                   <label for="isbn">ISBN</label>
                   <input type="text" name="ISBN" class="form-control" id="isbn" required>
@@ -41,6 +41,10 @@
                 <div class="form-group">
                   <label for="penulis">Penulis Buku</label>
                   <input type="text" name="penulis" class="form-control" id="penulis" required>
+                </div>
+                <div class="form-group">
+                  <label for="gambar">Gambar Buku</label>
+                  <input type="file" name="gambar" class="form-control" id="gambar">
                 </div>
 
                 <div class="form-group">

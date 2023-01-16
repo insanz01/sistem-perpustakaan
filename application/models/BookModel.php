@@ -10,7 +10,7 @@ class BookModel extends CI_Model
 
   private function generate_kode()
   {
-    $exists = $this->db->get('membership')->result_array();
+    $exists = $this->db->get('buku')->result_array();
     if (empty($exists)) {
       return 'BK_000001';
     }
