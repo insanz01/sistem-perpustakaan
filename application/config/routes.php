@@ -77,3 +77,5 @@ $route['buku/do_add'] = 'BookController/do_add_book';
 $route['buku/edit/(:any)'] = 'BookController/edit_book/$1';
 $route['buku/do_edit'] = 'BookController/do_update_book';
 $route['buku/delete'] = 'BookController/delete_book';
+
+$route['buku_tamu'] = 'GuestBookController/index';
