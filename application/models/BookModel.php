@@ -57,6 +57,6 @@ class BookModel extends CI_Model
     $this->db->where('id', $id);
     $this->db->update('buku');
 
-    return $this->db->rows_affected();
+    return $this->db->affected_rows();
   }
 }
