@@ -17,4 +17,14 @@ class GuestBookController extends CI_Controller {
     $this->load->view('app/buku_tamu/index', $data);
     $this->load->view('templates/panel/footer');
   }
+
+  public function member() {
+    $data['tamu'] = $this->bukutamu_m->get_all_guests_member();
+
+    $this->load->view('templates/panel/header');
+    $this->load->view('templates/panel/sidebar');
+    $this->load->view('templates/panel/navbar');
+    $this->load->view('app/buku_tamu/member', $data);
+    $this->load->view('templates/panel/footer');
+  }
 }

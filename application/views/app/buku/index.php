@@ -48,7 +48,9 @@
                           <td><?= $book['kode_buku'] ?></td>
                           <td><?= $book['ISBN'] ?></td>
                           <td><?= $book['judul'] ?></td>
-                          <td><?= $book['gambar'] ?></td>
+                          <td>
+                            <img src="<?= base_url('uploads/') . $book['gambar'] ?>" style="width: 150px">
+                          </td>
                           <td><?= $book['penulis'] ?></td>
                           <td>
                             <a href="<?= base_url('buku/edit/') . $book['id'] ?>" class="badge badge-sm badge-info badge-pill">edit</a>

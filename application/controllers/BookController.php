@@ -69,9 +69,9 @@ class BookController extends CI_Controller
     redirect('buku');
   }
 
-  public function edit_book()
+  public function edit_book($id)
   {
-    $data['book'] = $this->book_m->get_single_book();
+    $data['buku'] = $this->book_m->get_single_book($id);
 
     $this->load->view('templates/panel/header');
     $this->load->view('templates/panel/sidebar');
@@ -87,9 +87,23 @@ class BookController extends CI_Controller
       'ISBN' => $this->input->post("ISBN"),
       'judul' => $this->input->post("judul"),
       'deskripsi' => $this->input->post("deskripsi"),
-      'gambar' => $this->input->post("gambar"),
       'penulis' => $this->input->post("penulis")
     ];
+
+    $config['upload_path']          = './uploads/';
+    $config['allowed_types']        = 'gif|jpg|png';
+    // $config['max_size']             = 100;
+    // $config['max_width']            = 1024;
+    // $config['max_height']           = 768;
+
+    $this->load->library('upload', $config);
+
+    if ($this->upload->do_upload('gambar'))
+    {
+      $imageData = array('upload_data' => $this->upload->data());
+  
+      $data['gambar'] = $imageData['upload_data']['file_name'];
+    }
 
     if ($this->book_m->update_book($data, $id)) {
       $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Berhasil mengubah data book</div>');
