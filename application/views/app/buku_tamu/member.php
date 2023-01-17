@@ -24,8 +24,8 @@
       <div class="row">
         <div class="col-12">
           <div class="row">
-            <div class="col-12">
-              <a href="<?= base_url('buku_tamu/member') ?>" class="btn btn-outline-primary float-right mb-2">LIHAT BUKU TAMU MEMBER</a>
+          <div class="col-12">
+              <a href="<?= base_url('buku_tamu') ?>" class="btn btn-outline-primary float-right mb-2">LIHAT BUKU TAMU</a>
             </div>
             <div class="col-12">
               <div class="card">
@@ -33,9 +33,8 @@
                   <table class="table custom-table">
                     <thead>
                       <th>#</th>
-                      <th>Nama</th>
-                      <th>Profesi</th>
-                      <th>Instansi</th>
+                      <th>Kode Member</th>
+                      <th>Nama Lengkap</th>
                       <th>Tanggal CheckIn</th>
                     </thead>
                     <tbody>
@@ -43,9 +42,8 @@
                       <?php foreach ($tamu as $tm) : ?>
                         <tr>
                           <td><?= $nomor++ ?></td>
-                          <td><?= $tm['nama'] ?></td>
-                          <td><?= $tm['profesi'] ?></td>
-                          <td><?= $tm['instansi'] ?></td>
+                          <td><?= $tm['kode_member'] ?></td>
+                          <td><?= $tm['nama_lengkap'] ?></td>
                           <td><?= $tm['created_at'] ?></td>
                         </tr>
                       <?php endforeach; ?>
