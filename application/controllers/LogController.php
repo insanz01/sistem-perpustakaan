@@ -10,6 +10,7 @@ class LogController extends CI_Controller
     $this->load->model("LogModel", "log_m");
     $this->load->model("MembershipModel", "membership_m");
     $this->load->model("BookModel", "book_m");
+    $this->load->model("AvailabilityModel", "avail_m");
   }
 
   // pengembalian buku
@@ -32,7 +33,13 @@ class LogController extends CI_Controller
     $data = $this->input->post();
 
     if($this->log_m->add_log_masuk($data)) {
-      $this->session->set_flashdata('pesan', "<div class='alert alert-success' role='alert'>Berhasil tambah data</div>");
+      $book_id = $this->log_m->get_book_by_kode($data['kode_buku']);
+
+      if($this->avail_m->increase_stock($book_id)) {
+        $this->session->set_flashdata('pesan', "<div class='alert alert-success' role='alert'>Berhasil tambah data dan berhasil menambah stok</div>");
+      } else {
+        $this->session->set_flashdata('pesan', "<div class='alert alert-danger' role='alert'>Berhasil tambah data dan gagal menambah stok</div>");
+      }
     } else {
       $this->session->set_flashdata('pesan', "<div class='alert alert-success' role='alert'>Gagal tambah data</div>");
     }
@@ -60,7 +67,13 @@ class LogController extends CI_Controller
     $data = $this->input->post();
 
     if($this->log_m->add_log_keluar($data)) {
-      $this->session->set_flashdata('pesan', "<div class='alert alert-success' role='alert'>Berhasil tambah data</div>");
+      $book_id = $this->log_m->get_book_by_kode($data['kode_buku']);
+
+      if($this->avail_m->decrease_stock($book_id)) {
+        $this->session->set_flashdata('pesan', "<div class='alert alert-success' role='alert'>Berhasil tambah data dan mengurangi menambah stok</div>");
+      } else {
+        $this->session->set_flashdata('pesan', "<div class='alert alert-danger' role='alert'>Stok habis</div>");
+      }
     } else {
       $this->session->set_flashdata('pesan', "<div class='alert alert-success' role='alert'>Gagal tambah data</div>");
     }

@@ -85,4 +85,10 @@ class LogModel extends CI_Model
 
     return $this->db->query($query)->result_array();
   }
+
+  public function get_book_by_kode($kode_buku) {
+    $book = $this->db->get_where('buku', ['kode_buku' => $kode_buku])->row_array();
+
+    return $book['id'];
+  }
 }
