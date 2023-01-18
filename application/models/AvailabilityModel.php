@@ -16,7 +16,7 @@ class AvailabilityModel extends CI_Model {
   }
 
   public function increase_stock($book_id) {
-    $stock_book = $this->db->get_where('ketersediaan', ['id_buku', $book_id]);
+    $stock_book = $this->db->get_where('ketersediaan', ['id_buku', $book_id])->row_array();
 
     $new_stock = $stock_book['stok'] + 1;
 
@@ -28,7 +28,7 @@ class AvailabilityModel extends CI_Model {
   }
 
   public function decrease_stock($book_id) {
-    $stock_book = $this->db->get_where('ketersediaan', ['id_buku', $book_id]);
+    $stock_book = $this->db->get_where('ketersediaan', ['id_buku', $book_id])->row_array();
 
     $new_stock = $stock_book['stok'] - 1;
 
