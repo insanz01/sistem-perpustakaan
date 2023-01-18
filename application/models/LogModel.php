@@ -46,11 +46,43 @@ class LogModel extends CI_Model
       return false;
     }
 
-    var_dump($data);
-    die;
+    var_dump($data); die;
+    
+    return $this->db->insert("log_buku_pinjam", $data);
   }
 
   public function add_log_masuk($data)
   {
+    $query = "SELECT log_buku_pinjam.id, log_buku_pinjam.kode_buku, log_buku_pinjam.kode_member, log_buku_pinjam.batas_pinjam, log_buku_pinjam.created_at FROM log_buku_pinjam WHERE log_buku_pinjam.kode_member = '$data[kode_member]' AND log_buku_pinjam.kode_buku = '$data[kode_buku]' ORDER BY log_buku_pinjam.id DESC LIMIT 1";
+
+    $log_buku_pinjam = $this->db->query($query)->row_array();
+
+    $today_date = date("Y-m-d", time());
+    $expire_date = date("Y-m-d", strtotime($log_buku_pinjam['batas_pinjam']));
+
+    $data_kembali = [
+      'kode_buku' => $data['kode_buku'],
+      'kode_member' => $data['kode_member'],
+      'log_buku_pinjam_id' => $log_buku_pinjam['id'],
+      'terlambat' => false
+    ];
+
+    if($expire_date < $today_date) {
+      $data_kembali['terlambat'] = true;
+    }
+
+    return $this->db->insert("log_buku_kembali", $data_kembali);
+  }
+
+  public function get_all_log_kembali() {
+    $query = "SELECT log_buku_kembali.id, buku.kode_buku, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_kembali.terlambat, log_buku_kembali.created_at FROM log_buku_kembali JOIN buku ON log_buku_kembali.kode_buku = buku.kode_buku JOIN membership ON log_buku_kembali.kode_member = membership.kode_member;";
+
+    return $this->db->query($query)->result_array();
+  }
+
+  public function get_all_log_pinjam() {
+    $query = "SELECT log_buku_pinjam.id, buku.kode_buku, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_pinjam.created_at FROM log_buku_pinjam JOIN buku ON log_buku_pinjam.kode_buku = buku.kode_buku JOIN membership ON log_buku_pinjam.kode_member = membership.kode_member";
+
+    return $this->db->query($query)->result_array();
   }
 }

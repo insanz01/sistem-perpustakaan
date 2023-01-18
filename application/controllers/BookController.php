@@ -8,6 +8,7 @@ class BookController extends CI_Controller
     parent::__construct();
 
     $this->load->model('BookModel', 'book_m');
+    $this->load->model('AvailabilityModel', 'avail_m');
   }
 
   public function index()
@@ -60,7 +61,9 @@ class BookController extends CI_Controller
       $data['gambar'] = $imageData['upload_data']['file_name'];
     }
 
-    if ($this->book_m->save_book($data)) {
+    $book_id = $this->book_m->save_book($data);
+
+    if ($this->avail_m->set_book_stock($book_id, $data['stok'])) {
       $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Berhasil menambahkan data book</div>');
     } else {
       $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Gagal menambahkan data book</div>');

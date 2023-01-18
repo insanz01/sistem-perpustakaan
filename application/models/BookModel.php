@@ -33,7 +33,9 @@ class BookModel extends CI_Model
   {
     $data['kode_buku'] = $this->generate_kode();
 
-    return $this->db->insert('buku', $data);
+    $this->db->insert('buku', $data);
+
+    return $this->db->insert_id();
   }
 
   public function get_all_books()

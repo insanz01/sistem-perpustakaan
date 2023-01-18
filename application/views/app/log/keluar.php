@@ -35,7 +35,15 @@
                       <th>Peminjam</th>
                     </thead>
                     <tbody>
-
+                      <?php $nomor = 1; ?>
+                      <?php foreach($logs as $log): ?>
+                        <tr>
+                          <td><?= $nomor++ ?></td>
+                          <td><?= $log['kode_buku'] ?></td>
+                          <td><?= $log['judul'] ?></td>
+                          <td><?= $log['nama_lengkap'] ?></td>
+                        </tr>
+                      <?php endforeach; ?>
                     </tbody>
                   </table>
                 </div>
@@ -49,18 +57,22 @@
               <form action="<?= base_url('log/pinjam/add') ?>" method="post">
                 <div class="form-group">
                   <label for="kode-buku">Kode Buku</label>
-                  <input type="text" id="kode-buku" name="kode_buku" class="form-control" required>
+                  <input type="text" list="books" id="kode-buku" name="kode_buku" class="form-control" required>
+
+                  <datalist id="books">
+                    <?php foreach($books as $book): ?>
+                      <option value="<?= $book['kode_buku'] ?>"><?= $book['judul'] ?></option>
+                    <?php endforeach; ?>
+                  </datalist>
                 </div>
                 <div class="form-group">
                   <label for="member">Kode Member</label>
                   <input type="text" list="members" name="kode_member" class="form-control" id="member" required>
 
                   <datalist id="members">
-                    <option value="Edge">Mengapa</option>
-                    <option value="Firefox">masih</option>
-                    <option value="Chrome">ada</option>
-                    <option value="Opera">cinta</option>
-                    <option value="Safari">rasa</option>
+                    <?php foreach($memberships as $member): ?>
+                      <option value="<?= $member['kode_member'] ?>"><?= $member['nama_lengkap'] ?></option>
+                    <?php endforeach; ?>
                   </datalist>
                 </div>
                 <div class="form-group">

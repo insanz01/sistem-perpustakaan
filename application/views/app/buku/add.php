@@ -46,6 +46,10 @@
                   <label for="gambar">Gambar Buku</label>
                   <input type="file" name="gambar" class="form-control" id="gambar">
                 </div>
+                <div class="form-group">
+                  <label for="stok">Stok Awal</label>
+                  <input type="number" name="stok" min="0" class="form-control" id="stok">
+                </div>
 
                 <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-block btn-lg">SIMPAN DATA BUKU</button>
