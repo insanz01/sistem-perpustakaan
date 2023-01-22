@@ -53,6 +53,8 @@ $route['default_controller'] = 'AppController/index';
 $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
+$route['dashboard'] = 'AppController/index';
+
 $route['visitor'] = 'VisitorController/guest';
 $route['visitor/do_submit'] = 'VisitorController/guest_record';
 $route['visitor/member'] = 'VisitorController/member';
