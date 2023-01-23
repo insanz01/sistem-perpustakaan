@@ -41,8 +41,8 @@ class AuthController extends CI_Controller
 
   public function do_logout()
   {
-		$this->session->unset("SESS_SIPERPUS_USERID");
-		$this->session->unset("SESS_SIPERPUS_USERNAME");
+		$this->session->unset_userdata("SESS_SIPERPUS_USERID");
+		$this->session->unset_userdata("SESS_SIPERPUS_USERNAME");
 
 		redirect('auth');
   }
