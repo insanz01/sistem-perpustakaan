@@ -21,7 +21,7 @@ class AuthController extends CI_Controller
 		$this->load->view('templates/auth/footer');
   }
 
-  public function doLogin() {
+  public function do_login() {
 		$data = $this->input->post();
 
 		if($this->m_auth->login($data)) {

@@ -54,9 +54,6 @@ $route['404_override'] = '';
 $route['translate_uri_dashes'] = FALSE;
 
 $route['auth'] = "AuthController/index";
-// $ruote['auth/login'] = "AuthController/index";
-// $ruote['login'] = "AuthController/index";
-// $ruote['auth/do_login'] = "AuthController/do_login";  
 $ruote['do_login'] = "AuthController/do_login";
 
 $route['dashboard'] = 'AppController/index';
