@@ -57,7 +57,7 @@
               <form action="<?= base_url('log/kembali/add') ?>" method="post">
                 <div class="form-group">
                   <label for="kode-buku">Kode Buku</label>
-                  <input type="text" list="books" id="kode-buku" name="kode_buku" class="form-control" required>
+                  <input type="text" list="books" id="kode-buku" name="kode_buku" class="form-control"  autocomplete="off" required>
 
                   <datalist id="books">
                     <?php foreach($books as $book): ?>
@@ -67,7 +67,7 @@
                 </div>
                 <div class="form-group">
                   <label for="member">Kode Member</label>
-                  <input type="text" list="members" name="kode_member" class="form-control" id="member" required>
+                  <input type="text" list="members" name="kode_member" class="form-control" id="member"  autocomplete="off" required>
 
                   <datalist id="members">
                     <?php foreach($memberships as $member): ?>

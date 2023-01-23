@@ -77,7 +77,7 @@ class BookController extends CI_Controller
 
     $book_id = $this->book_m->save_book($data);
 
-    if ($this->avail_m->set_book_stock($book_id, $data['stok'])) {
+    if ($this->avail_m->set_book_stock($book_id, $this->input->post('stok'))) {
       $this->session->set_flashdata('pesan', '<div class="alert alert-success" role="alert">Berhasil menambahkan data book</div>');
     } else {
       $this->session->set_flashdata('pesan', '<div class="alert alert-danger" role="alert">Gagal menambahkan data book</div>');

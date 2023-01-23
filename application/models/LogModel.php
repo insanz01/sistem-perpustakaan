@@ -45,8 +45,6 @@ class LogModel extends CI_Model
     if (!$this->is_book_exists($data['kode_buku'])) {
       return false;
     }
-
-    var_dump($data); die;
     
     return $this->db->insert("log_buku_pinjam", $data);
   }
