@@ -61,4 +61,10 @@ class BookModel extends CI_Model
 
     return $this->db->affected_rows();
   }
+
+  public function get_popular_book() {
+    $query = "SELECT *, COUNT(*) as total_pinjam FROM log_buku_pinjam WHERE month(created_at) = month(now()) ORDER BY total_pinjam DESC";
+
+    return $this->db->query($query)->result_array();
+  }
 }
