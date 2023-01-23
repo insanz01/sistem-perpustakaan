@@ -14,7 +14,7 @@
           <?php endif; ?>
           <p class="login-box-msg">Sign in to start your session</p>
 
-          <form action="<?= base_url('do_login') ?>" method="post">
+          <form action="<?= base_url('auth/do_login') ?>" method="post">
             <div class="input-group mb-3">
               <input type="text" class="form-control" autocomplete="off" name="username" placeholder="Username">
               <div class="input-group-append">
