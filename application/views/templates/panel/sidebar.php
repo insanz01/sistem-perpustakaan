@@ -77,6 +77,13 @@
           </a>
         </li>
 
+        <li class="nav-item">
+          <a href="<?= base_url('buku/populer') ?>" class="nav-link">
+            <i class="nav-icon fas fa-books"></i>
+            <p>Peminjaman Populer</p>
+          </a>
+        </li>
+
         <!-- <li class="nav-item">
           <a href="<?= base_url('admin/laporan') ?>" target="_blank" class="nav-link">
             <i class="nav-icon fas fa-book"></i>

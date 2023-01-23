@@ -26,7 +26,7 @@ class BookController extends CI_Controller
     $this->load->view('templates/panel/footer');
   }
 
-  public function popular() {
+  public function popular_book() {
     $data['books'] = $this->book_m->get_popular_book();
 
     $this->load->view('templates/panel/header');

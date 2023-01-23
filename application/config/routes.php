@@ -86,5 +86,7 @@ $route['buku/edit/(:any)'] = 'BookController/edit_book/$1';
 $route['buku/do_edit'] = 'BookController/do_update_book';
 $route['buku/delete'] = 'BookController/delete_book';
 
+$route['buku/populer'] = 'BookController/popular_book';
+
 $route['buku_tamu'] = 'GuestBookController/index';
 $route['buku_tamu/member'] = 'GuestBookController/member';
