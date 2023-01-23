@@ -43,17 +43,19 @@
                     <tbody>
                       <?php $index = 1 ?>
                       <?php foreach ($books as $book) : ?>
-                        <tr>
-                          <td><?= $index++ ?></td>
-                          <td><?= $book['kode_buku'] ?></td>
-                          <td><?= $book['ISBN'] ?></td>
-                          <td><?= $book['judul'] ?></td>
-                          <td>
-                            <img src="<?= base_url('uploads/') . $book['gambar'] ?>" style="width: 150px">
-                          </td>
-                          <td><?= $book['penulis'] ?></td>
-                          <td><?= $book['total_pinjam'] ?></td>
-                        </tr>
+                        <?php if($book['id']): ?>
+                          <tr>
+                            <td><?= $index++ ?></td>
+                            <td><?= $book['kode_buku'] ?></td>
+                            <td><?= $book['ISBN'] ?></td>
+                            <td><?= $book['judul'] ?></td>
+                            <td>
+                              <img src="<?= base_url('uploads/') . $book['gambar'] ?>" style="width: 150px">
+                            </td>
+                            <td><?= $book['penulis'] ?></td>
+                            <td><?= $book['total_pinjam'] ?></td>
+                          </tr>
+                        <?php endif; ?>
                       <?php endforeach; ?>
                     </tbody>
                   </table>

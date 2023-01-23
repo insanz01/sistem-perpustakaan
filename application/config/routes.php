@@ -55,6 +55,7 @@ $route['translate_uri_dashes'] = FALSE;
 
 $route['auth'] = "AuthController/index";
 $route['auth/do_login'] = "AuthController/do_login";
+$route['logout'] = "AuthController/do_logout";
 
 $route['dashboard'] = 'AppController/index';
 

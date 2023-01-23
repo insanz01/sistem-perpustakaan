@@ -79,7 +79,7 @@
 
         <li class="nav-item">
           <a href="<?= base_url('buku/populer') ?>" class="nav-link">
-            <i class="nav-icon fas fa-books"></i>
+            <i class="nav-icon fas fa-book-reader"></i>
             <p>Peminjaman Populer</p>
           </a>
         </li>
