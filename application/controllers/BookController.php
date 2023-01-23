@@ -8,7 +8,7 @@ class BookController extends CI_Controller
     parent::__construct();
 
     if(!$this->session->userdata('SESS_SIPERPUS_USERID')) {
-      redirect('login');
+      redirect('auth');
     }
 
     $this->load->model('BookModel', 'book_m');
