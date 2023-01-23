@@ -5,7 +5,7 @@ class AuthModel extends CI_Model {
     parent::__construct();
   }
 
-  public function login() {
+  public function login($data) {
     $user = $this->db->get_where('users', ['username' => $data['username']])->row_array();
 
 		if(password_verify($data['password'], $user['password'])) {
