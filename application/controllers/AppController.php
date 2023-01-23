@@ -8,6 +8,10 @@ class AppController extends CI_Controller
     parent::__construct();
 
     $this->load->model("AppModel", 'app_m');
+
+    if(!$this->session->userdata('SESS_SIPERPUS_USERID')) {
+      redirect('login');
+    }
   }
 
   public function index()

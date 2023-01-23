@@ -7,6 +7,10 @@ class BookController extends CI_Controller
   {
     parent::__construct();
 
+    if(!$this->session->userdata('SESS_SIPERPUS_USERID')) {
+      redirect('login');
+    }
+
     $this->load->model('BookModel', 'book_m');
     $this->load->model('AvailabilityModel', 'avail_m');
   }
@@ -19,6 +23,16 @@ class BookController extends CI_Controller
     $this->load->view('templates/panel/sidebar');
     $this->load->view('templates/panel/navbar');
     $this->load->view('app/buku/index', $data);
+    $this->load->view('templates/panel/footer');
+  }
+
+  public function popular() {
+    $data['books'] = $this->book_m->get_popular_book();
+
+    $this->load->view('templates/panel/header');
+    $this->load->view('templates/panel/sidebar');
+    $this->load->view('templates/panel/navbar');
+    $this->load->view('app/buku/popular', $data);
     $this->load->view('templates/panel/footer');
   }
 

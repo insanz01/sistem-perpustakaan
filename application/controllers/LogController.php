@@ -7,6 +7,10 @@ class LogController extends CI_Controller
   {
     parent::__construct();
 
+    if(!$this->session->userdata('SESS_SIPERPUS_USERID')) {
+      redirect('login');
+    }
+
     $this->load->model("LogModel", "log_m");
     $this->load->model("MembershipModel", "membership_m");
     $this->load->model("BookModel", "book_m");

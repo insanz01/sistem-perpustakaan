@@ -5,6 +5,10 @@ class GuestBookController extends CI_Controller {
   public function __construct() {
     parent::__construct();
 
+    if(!$this->session->userdata('SESS_SIPERPUS_USERID')) {
+      redirect('login');
+    }
+
     $this->load->model("GuestBookModel", "bukutamu_m");
   }
 
