@@ -58,8 +58,3 @@
   </style>
 </head>
 <body class="hold-transition" style="background-image: url('<?= base_url('assets/bahan/bg.jpg') ?>'); background-size: cover">
-
-<audio autoplay>
-  <source src="<?= base_url('assets/bahan/musik.mp3') ?>" type="audio/mpeg">
-  <source src="<?= base_url('assets/bahan/musik.mp3') ?>" type="audio/mp3">
-</audio>

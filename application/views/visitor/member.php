@@ -3,7 +3,7 @@
     <div class="col-5 mx-auto">
       <div class="card">
         <div class="card-body">
-          <form action="<?= base_url("visitor/do_submit") ?>" method="post">
+          <form action="<?= base_url("visitor/member/do_submit") ?>" method="post">
             <h3 class="text-center mb-4">BUKU TAMU MEMBER</h3>
             <hr>
             <div class="form-group">

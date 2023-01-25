@@ -1,6 +1,9 @@
 <!-- <html>
 
 <body> -->
+  <audio autoplay>
+    <source src="<?= base_url('assets/bahan/musik.mp3') ?>" type="audio/mpeg">
+  </audio>
 
   <!-- jQuery -->
   <script src="<?= base_url() ?>assets/plugins/jquery/jquery.min.js"></script>

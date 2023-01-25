@@ -15,7 +15,8 @@ class VisitorModel extends CI_Model
 
   public function save_guestbook_member($data)
   {
-    $query = `SELECT * FROM membership WHERE email = "$data[identitas]" OR nomor_hp = "$data[identitas]"`;
+    $query = "SELECT * FROM membership WHERE email = '$data[identitas]' OR nomor_hp = '$data[identitas]'";
+
     $member = $this->db->query($query)->row_array();
 
     if ($member) {
