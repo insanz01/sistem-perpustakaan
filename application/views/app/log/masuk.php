@@ -33,6 +33,8 @@
                       <th>Kode Buku</th>
                       <th>Nama Buku</th>
                       <th>Peminjam</th>
+                      <th>Terlambat</th>
+                      <th>Tanggal Kembali</th>
                     </thead>
                     <tbody>
                       <?php $nomor = 1; ?>
@@ -42,6 +44,14 @@
                           <td><?= $log['kode_buku'] ?></td>
                           <td><?= $log['judul'] ?></td>
                           <td><?= $log['nama_lengkap'] ?></td>
+                          <td>
+                            <?php if($log['terlambat']): ?>
+                              Ya
+                            <?php else: ?>
+                              Tidak
+                            <?php endif; ?>
+                          </td>
+                          <td><?= $log['created_at'] ?></td>
                         </tr>
                       <?php endforeach; ?>
                     </tbody>
