@@ -53,6 +53,16 @@
                 </div>
 
                 <div class="form-group">
+                  <label for="lemari">Nomor Lemari</label>
+                  <input type="text" name="lemari" class="form-control" id="lemari" value="<?= $buku["lemari"] ?>">
+                </div>
+
+                <div class="form-group">
+                  <label for="rak">Nomor Rak</label>
+                  <input type="text" name="rak" class="form-control" id="rak" value="<?= $buku["rak"] ?>">
+                </div>
+
+                <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-block btn-lg">SIMPAN DATA BUKU</button>
                 </div>
               </form>

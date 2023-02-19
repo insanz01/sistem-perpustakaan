@@ -52,6 +52,16 @@
                 </div>
 
                 <div class="form-group">
+                  <label for="lemari">Nomor Lemari</label>
+                  <input type="text" name="lemari" required class="form-control" id="lemari">
+                </div>
+
+                <div class="form-group">
+                  <label for="rak">Nomor Rak</label>
+                  <input type="text" name="rak" required class="form-control" id="rak">
+                </div>
+
+                <div class="form-group">
                   <button type="submit" class="btn btn-primary btn-block btn-lg">SIMPAN DATA BUKU</button>
                 </div>
               </form>
