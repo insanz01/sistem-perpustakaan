@@ -73,25 +73,25 @@ class LogModel extends CI_Model
   }
 
   public function get_all_log_kembali() {
-    $query = "SELECT log_buku_kembali.id, buku.kode_buku, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_kembali.terlambat, log_buku_kembali.created_at FROM log_buku_kembali JOIN buku ON log_buku_kembali.kode_buku = buku.kode_buku JOIN membership ON log_buku_kembali.kode_member = membership.kode_member;";
+    $query = "SELECT log_buku_kembali.id, buku.kode_buku, buku.ISBN, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_kembali.terlambat, log_buku_kembali.created_at FROM log_buku_kembali JOIN buku ON log_buku_kembali.kode_buku = buku.kode_buku JOIN membership ON log_buku_kembali.kode_member = membership.kode_member;";
 
     return $this->db->query($query)->result_array();
   }
 
   public function get_all_log_kembali_filter($filter) {
-    $query = "SELECT log_buku_kembali.id, buku.kode_buku, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_kembali.terlambat, log_buku_kembali.created_at FROM log_buku_kembali JOIN buku ON log_buku_kembali.kode_buku = buku.kode_buku JOIN membership ON log_buku_kembali.kode_member = membership.kode_member WHERE DATE(log_buku_pinjam.created_at) BETWEEN '$filter[filter_awal]' AND '$filter[filter_akhir]'";
+    $query = "SELECT log_buku_kembali.id, buku.kode_buku, buku.ISBN, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_kembali.terlambat, log_buku_kembali.created_at FROM log_buku_kembali JOIN buku ON log_buku_kembali.kode_buku = buku.kode_buku JOIN membership ON log_buku_kembali.kode_member = membership.kode_member WHERE DATE(log_buku_pinjam.created_at) BETWEEN '$filter[filter_awal]' AND '$filter[filter_akhir]'";
 
     return $this->db->query($query)->result_array();
   }
 
   public function get_all_log_pinjam() {
-    $query = "SELECT log_buku_pinjam.id, buku.kode_buku, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_pinjam.created_at FROM log_buku_pinjam JOIN buku ON log_buku_pinjam.kode_buku = buku.kode_buku JOIN membership ON log_buku_pinjam.kode_member = membership.kode_member";
+    $query = "SELECT log_buku_pinjam.id, buku.kode_buku, buku.ISBN, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_pinjam.created_at FROM log_buku_pinjam JOIN buku ON log_buku_pinjam.kode_buku = buku.kode_buku JOIN membership ON log_buku_pinjam.kode_member = membership.kode_member";
 
     return $this->db->query($query)->result_array();
   }
 
   public function get_all_log_pinjam_filter($filter) {
-    $query = "SELECT log_buku_pinjam.id, buku.kode_buku, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_pinjam.created_at FROM log_buku_pinjam JOIN buku ON log_buku_pinjam.kode_buku = buku.kode_buku JOIN membership ON log_buku_pinjam.kode_member = membership.kode_member WHERE DATE(log_buku_pinjam.created_at) BETWEEN '$filter[filter_awal]' AND '$filter[filter_akhir]'";
+    $query = "SELECT log_buku_pinjam.id, buku.kode_buku, buku.ISBN, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_pinjam.created_at FROM log_buku_pinjam JOIN buku ON log_buku_pinjam.kode_buku = buku.kode_buku JOIN membership ON log_buku_pinjam.kode_member = membership.kode_member WHERE DATE(log_buku_pinjam.created_at) BETWEEN '$filter[filter_awal]' AND '$filter[filter_akhir]'";
 
     return $this->db->query($query)->result_array();
   }
