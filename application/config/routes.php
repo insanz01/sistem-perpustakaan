@@ -88,3 +88,6 @@ $route['buku/populer'] = 'BookController/popular_book';
 
 $route['buku_tamu'] = 'GuestBookController/index';
 $route['buku_tamu/member'] = 'GuestBookController/member';
+
+$route['print/laporan'] = "PrintController/index";
+$route['print/cetak'] = "PrintController/print";
