@@ -85,7 +85,7 @@
         </li>
 
         <li class="nav-item">
-          <a href="<?= base_url('print/laporan') ?>" class="nav-link">
+          <a href="<?= base_url('print/laporan') ?>" class="nav-link" target="_blank">
             <i class="nav-icon fas fa-print"></i>
             <p>Cetak Laporan</p>
           </a>
