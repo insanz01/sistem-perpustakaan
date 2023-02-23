@@ -63,11 +63,11 @@ class PrintController extends CI_Controller {
         $filename = "app/print/buku_tamu_member";
         break;
       case "LOG_PINJAM":
-        $all_laporan = $this->guest_m->get_all_log_pinjam();
+        $all_laporan = $this->log_m->get_all_log_pinjam();
 
         if($filter['filter_awal'] && $filter['
         filter_akhir']) {
-          $all_laporan = $this->guest_m->get_all_log_pinjam_filter($filter);
+          $all_laporan = $this->log_m->get_all_log_pinjam_filter($filter);
         }
 
         $data['all_laporan'] = $all_laporan;
@@ -75,11 +75,11 @@ class PrintController extends CI_Controller {
         $filename = "app/print/log_pinjam";
         break;
       case "LOG_KEMBALI":
-        $all_laporan = $this->guest_m->get_all_log_kembali();
+        $all_laporan = $this->log_m->get_all_log_kembali();
 
         if($filter['filter_awal'] && $filter['
         filter_akhir']) {
-          $all_laporan = $this->guest_m->get_all_log_kembali_filter($filter);
+          $all_laporan = $this->log_m->get_all_log_kembali_filter($filter);
         }
 
         $data['all_laporan'] = $all_laporan;
