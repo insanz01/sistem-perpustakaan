@@ -43,6 +43,7 @@ class AuthController extends CI_Controller
   {
 		$this->session->unset_userdata("SESS_SIPERPUS_USERID");
 		$this->session->unset_userdata("SESS_SIPERPUS_USERNAME");
+		$this->session->unset_userdata("SESS_SIPERPUS_NAME");
 
 		redirect('auth');
   }

@@ -19,8 +19,8 @@ class PrintController extends CI_Controller {
 
   public function print() {
     $filter = [
-      "filter_awal" => $this->input->post("filter_awal"),
-      "filter_akhir" => $this->input->post("filter_akhir")
+      "filter_awal" => $this->input->post("tanggal_mulai"),
+      "filter_akhir" => $this->input->post("tanggal_akhir")
     ];
 
     $jenisLaporan = $this->input->post("jenis_laporan");
@@ -29,11 +29,11 @@ class PrintController extends CI_Controller {
       case "BUKU_POPULER":
         $all_laporan = $this->book_m->get_popular_book();
 
-        if($filter['filter_awal'] && $filter['
-        filter_akhir']) {
+        if($filter['filter_awal'] && $filter['filter_akhir']) {
           $all_laporan = $this->book_m->get_popular_book_filter($filter);
         }
-
+        
+        $data['filter'] = $filter;
         $data['all_laporan'] = $all_laporan;
 
         $filename = "app/print/buku_populer";
@@ -41,11 +41,11 @@ class PrintController extends CI_Controller {
       case "BUKU_TAMU":
         $all_laporan = $this->guest_m->get_all_guests();
 
-        if($filter['filter_awal'] && $filter['
-        filter_akhir']) {
+        if($filter['filter_awal'] && $filter['filter_akhir']) {
           $all_laporan = $this->guest_m->get_all_guests_filter($filter);
         }
 
+        $data['filter'] = $filter;
         $data['all_laporan'] = $all_laporan;
 
         $filename = "app/print/buku_tamu";
@@ -53,11 +53,11 @@ class PrintController extends CI_Controller {
       case "BUKU_TAMU_MEMBER":
         $all_laporan = $this->guest_m->get_all_guests_member();
 
-        if($filter['filter_awal'] && $filter['
-        filter_akhir']) {
+        if($filter['filter_awal'] && $filter['filter_akhir']) {
           $all_laporan = $this->guest_m->get_all_guests_member_filter($filter);
         }
 
+        $data['filter'] = $filter;
         $data['all_laporan'] = $all_laporan;
 
         $filename = "app/print/buku_tamu_member";
@@ -65,11 +65,11 @@ class PrintController extends CI_Controller {
       case "LOG_PINJAM":
         $all_laporan = $this->log_m->get_all_log_pinjam();
 
-        if($filter['filter_awal'] && $filter['
-        filter_akhir']) {
+        if($filter['filter_awal'] && $filter['filter_akhir']) {
           $all_laporan = $this->log_m->get_all_log_pinjam_filter($filter);
         }
 
+        $data['filter'] = $filter;
         $data['all_laporan'] = $all_laporan;
 
         $filename = "app/print/log_pinjam";
@@ -77,11 +77,11 @@ class PrintController extends CI_Controller {
       case "LOG_KEMBALI":
         $all_laporan = $this->log_m->get_all_log_kembali();
 
-        if($filter['filter_awal'] && $filter['
-        filter_akhir']) {
+        if($filter['filter_awal'] && $filter['filter_akhir']) {
           $all_laporan = $this->log_m->get_all_log_kembali_filter($filter);
         }
 
+        $data['filter'] = $filter;
         $data['all_laporan'] = $all_laporan;
 
         $filename = "app/print/log_kembali";

@@ -13,6 +13,44 @@
   <body>
   <div class="container my-5 py-5">
 
+  <img src="<?= base_url('assets/image/') ?>/Kayuh_Baimbai.png" width="20%" height="20%" align="left"/>
+      <p align="center">
+        <b>
+          <font size="4">PERPUSTAKAAN KEJAKSAAN TINGGI KALIMANTAN SELATAN</font>
+        </b>
+        <br>
+        <font size="2">Jln. D.I. Pandjaitan No 26, Antasan Besar, Kec. Banjarmasin Tengah</font><br>
+        <font size="2">Kota Banjarmasin, Kalimantan Selatan 70123</font> 
+        <br>
+        <br>
+        <br>
+        <hr size="2px" color="black">
+      </p>
+
+      <div class="row">
+        <div class="col-12">
+          <table style="border: 0; width: 100%">
+            <tr>
+              <td>Cetak : (<?= $this->session->userdata("SESS_SIPERPUS_USERNAME") ?>) ((<?= $this->session->userdata("SESS_SIPERPUS_NAME") ?>))</td>
+              <td align="right">Tanggal Cetak : <?= date("d M Y", time()) ?></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td>
+                Filter : 
+                <?php if($filter['filter_awal'] != null && $filter['filter_akhir'] != null): ?>
+                  <?= date('d M Y', strtotime($filter['filter_awal'])) . " - " . date('d M Y', strtotime($filter['filter_akhir'])) ?> / Rentang Tanggal / Buku Tamu
+                <?php endif; ?>
+              </td>
+              <td></td>
+            </tr>
+          </table>
+        </div>
+      </div>
+
       <h3 class="text-center mb-2">LAPORAN BUKU TAMU</h3>
       <table class="table table-bordered">
         <thead>
@@ -35,6 +73,23 @@
           <?php endforeach; ?>
         </tbody>
       </table>
+      
+      <br>
+      <div style="text-align: center; display: inline-block; float: right;">
+        <h6>
+          Mengetahui
+          <br>
+            Banjarmasin, <?php echo (date('d M Y')); ?>
+          <br>
+          <br>
+          <br>
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://primbon.com/hantu.php" alt="TTD QR">
+          <br>
+          <br>
+          <br><u>Ir. M. MAKHMUD, MS</u>
+          <br>NIP. 19650328 198803 1 009
+        </h6> 
+      </div>
     </div>
 
     <!-- Optional JavaScript; choose one of the two! -->
