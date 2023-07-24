@@ -43,6 +43,7 @@
                         <option value="BUKU_TAMU_MEMBER">Buku Tamu Member</option>
                         <option value="LOG_PINJAM">Log Peminjaman Buku</option>
                         <option value="LOG_KEMBALI">Log Pengembalian Buku</option>
+                        <option value="RIWAYAT_PINJAM">Riwayat Peminjaman</option>
                       </select>
                     </div>
                     

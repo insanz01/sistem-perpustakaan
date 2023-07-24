@@ -26,6 +26,32 @@ class PrintController extends CI_Controller {
     $jenisLaporan = $this->input->post("jenis_laporan");
 
     switch($jenisLaporan) {
+      case "RIWAYAT_PINJAM":
+        $all_laporan = $this->book_m->get_popular_book();
+        $all_chart = [];
+
+        $month = ["", "Januari", "Februari", "Maret", "April", "Mei", "Juni", "Juli", "Agustus", "September", "Oktober", "Nopember", "Desember"];
+
+        for($i = 1; $i <= 12; $i++) {
+          $chart = $this->book_m->get_month_chart($i);
+          array_push($all_chart, [
+            "bulan" => $month[$i],
+            "total_pinjam" => $chart['total_pinjam']
+          ]);
+        }
+
+        if($filter['filter_awal'] && $filter['filter_akhir']) {
+          $all_laporan = $this->book_m->get_popular_book_filter($filter);
+        }
+        
+        $data['filter'] = $filter;
+        $data['all_laporan'] = $all_laporan;
+        $data['all_chart'] = $all_chart;
+
+        // var_dump($data); die;
+
+        $filename = "app/print/riwayat_peminjaman";
+        break;
       case "BUKU_POPULER":
         $all_laporan = $this->book_m->get_popular_book();
 

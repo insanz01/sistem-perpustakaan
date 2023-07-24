@@ -73,4 +73,10 @@ class BookModel extends CI_Model
 
     return $this->db->query($query)->result_array();
   }
+
+  public function get_month_chart($current_month) {
+    $query = "SELECT COUNT(log_buku_pinjam.id) as total_pinjam FROM log_buku_pinjam WHERE month(log_buku_pinjam.created_at) = $current_month";
+
+    return $this->db->query($query)->row_array();
+  }
 }
