@@ -44,6 +44,10 @@
                   <input type="text" name="penulis" class="form-control" id="penulis" value="<?= $buku['penulis'] ?>" required>
                 </div>
                 <div class="form-group">
+                  <label for="penerbit">Penerbit Buku</label>
+                  <input type="text" name="penerbit" class="form-control" id="penerbit" value="<?= $buku['penerbit'] ?>" required>
+                </div>
+                <div class="form-group">
                   <label for="gambar">Gambar Buku 
                     <small>(tidak perlu upload file jika tidak ingin merubah)</small>
                   </label>

@@ -38,6 +38,7 @@
                       <th>Judul</th>
                       <th>Gambar</th>
                       <th>Penulis</th>
+                      <th>Penerbit</th>
                       <th>Total Pinjam</th>
                     </thead>
                     <tbody>
@@ -53,6 +54,7 @@
                               <img src="<?= base_url('uploads/') . $book['gambar'] ?>" style="width: 150px">
                             </td>
                             <td><?= $book['penulis'] ?></td>
+                            <td><?= $book['penerbit'] ?></td>
                             <td><?= $book['total_pinjam'] ?></td>
                           </tr>
                         <?php endif; ?>

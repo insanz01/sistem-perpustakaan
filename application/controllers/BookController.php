@@ -51,7 +51,8 @@ class BookController extends CI_Controller
       'ISBN' => $this->input->post('ISBN'),
       'judul' => $this->input->post('judul'),
       'deskripsi' => $this->input->post('deskripsi'),
-      'penulis' => $this->input->post('penulis')
+      'penulis' => $this->input->post('penulis'),
+      'penerbit' => $this->input->post('penerbit')
     ];
 
     $config['upload_path']          = './uploads/';

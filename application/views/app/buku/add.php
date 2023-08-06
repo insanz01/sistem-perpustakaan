@@ -43,6 +43,10 @@
                   <input type="text" name="penulis" class="form-control" id="penulis" required>
                 </div>
                 <div class="form-group">
+                  <label for="penerbit">Penerbit Buku</label>
+                  <input type="text" name="penerbit" class="form-control" id="penerbit" required>
+                </div>
+                <div class="form-group">
                   <label for="gambar">Gambar Buku</label>
                   <input type="file" name="gambar" class="form-control" id="gambar">
                 </div>

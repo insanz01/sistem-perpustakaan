@@ -63,13 +63,13 @@ class BookModel extends CI_Model
   }
 
   public function get_popular_book() {
-    $query = "SELECT buku.id, buku.kode_buku, buku.ISBN, buku.judul, buku.deskripsi, buku.gambar, buku.penulis, COUNT(log_buku_pinjam.id) as total_pinjam FROM buku JOIN log_buku_pinjam ON log_buku_pinjam.kode_buku = buku.kode_buku WHERE month(log_buku_pinjam.created_at) = month(now()) AND buku.id is not null GROUP BY log_buku_pinjam.kode_buku ORDER BY total_pinjam DESC";
+    $query = "SELECT buku.id, buku.kode_buku, buku.ISBN, buku.judul, buku.deskripsi, buku.gambar, buku.penulis, buku.penerbit, COUNT(log_buku_pinjam.id) as total_pinjam FROM buku JOIN log_buku_pinjam ON log_buku_pinjam.kode_buku = buku.kode_buku WHERE month(log_buku_pinjam.created_at) = month(now()) AND buku.id is not null GROUP BY log_buku_pinjam.kode_buku ORDER BY total_pinjam DESC";
 
     return $this->db->query($query)->result_array();
   }
 
   public function get_popular_book_filter($filter) {
-    $query = "SELECT buku.id, buku.kode_buku, buku.ISBN, buku.judul, buku.deskripsi, buku.gambar, buku.penulis, COUNT(log_buku_pinjam.id) as total_pinjam FROM buku JOIN log_buku_pinjam ON log_buku_pinjam.kode_buku = buku.kode_buku WHERE month(log_buku_pinjam.created_at) = month(now()) AND buku.id is not null AND DATE(log_buku_pinjam.created_at) BETWEEN '$filter[filter_awal]' AND '$filter[filter_akhir]' GROUP BY log_buku_pinjam.kode_buku ORDER BY total_pinjam DESC";
+    $query = "SELECT buku.id, buku.kode_buku, buku.ISBN, buku.judul, buku.deskripsi, buku.gambar, buku.penulis, buku.penerbit, COUNT(log_buku_pinjam.id) as total_pinjam FROM buku JOIN log_buku_pinjam ON log_buku_pinjam.kode_buku = buku.kode_buku WHERE month(log_buku_pinjam.created_at) = month(now()) AND buku.id is not null AND DATE(log_buku_pinjam.created_at) BETWEEN '$filter[filter_awal]' AND '$filter[filter_akhir]' GROUP BY log_buku_pinjam.kode_buku ORDER BY total_pinjam DESC";
 
     return $this->db->query($query)->result_array();
   }

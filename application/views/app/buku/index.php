@@ -38,6 +38,7 @@
                       <th>Judul</th>
                       <th>Gambar</th>
                       <th>Penulis</th>
+                      <th>Penerbit</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -52,6 +53,7 @@
                             <img src="<?= base_url('uploads/') . $book['gambar'] ?>" style="width: 150px">
                           </td>
                           <td><?= $book['penulis'] ?></td>
+                          <td><?= $book['penerbit'] ?></td>
                           <td>
                             <a href="<?= base_url('buku/edit/') . $book['id'] ?>" class="badge badge-sm badge-info badge-pill">edit</a>
                             <a href="#!" data-toggle="modal" data-target="#hapusModal" class="badge badge-sm badge-danger badge-pill" onclick="hapusData(this)" data-id="<?= $book['id'] ?>">hapus</a>
