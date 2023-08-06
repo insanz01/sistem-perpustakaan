@@ -54,7 +54,7 @@
               <td></td>
             </tr>
             <tr>
-              <td align="right">Nama Member : <?= $member['nama_lengkap'] ?></td>
+              <td align="left">Nama Member : <?= $member['nama_lengkap'] ?></td>
               <td></td>
             </tr>
           </table>
@@ -69,7 +69,6 @@
           <th>Judul Buku</th>
           <th>Penerbit</th>
           <th>Penulis</th>
-          <th>Tahun</th>
           <th>Status Peminjaman</th>
           <th>Terlambat</th>
         </thead>
@@ -78,13 +77,18 @@
           <?php foreach($all_laporan as $laporan): ?>
             <tr>
               <td><?= $nomor++ ?></td>
-              <td><?= $laporan['kode_buku'] ?></td>
+              <td><?= $laporan['created_at'] ?></td>
               <td><?= $laporan['judul'] ?></td>
               <td><?= $laporan['penerbit'] ?></td>
               <td><?= $laporan['penulis'] ?></td>
-              <td><?= $laporan['tahun'] ?></td>
               <td><?= $laporan['status'] ?></td>
-              <td><?= $laporan['terlambat'] ?></td>
+              <td>
+                <?php if($laporan['terlambat']): ?>
+                  Terlambat
+                <?php else: ?>
+                  Tidak Terlambat
+                <?php endif; ?>
+              </td>
             </tr>
           <?php endforeach; ?>
         </tbody>
@@ -105,7 +109,7 @@
           <br>
           <br>
           <br>
-          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://primbon.com/hantu.php" alt="TTD QR">
+          <img src="https://api.qrserver.com/v1/create-qr-code/?size=150x150&data=https://google.com/" alt="TTD QR">
           <br>
           <br>
           <br><u>Ir. M. MAKHMUD, MS</u>

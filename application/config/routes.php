@@ -91,3 +91,4 @@ $route['buku_tamu/member'] = 'GuestBookController/member';
 
 $route['print/laporan'] = "PrintController/index";
 $route['print/cetak'] = "PrintController/print";
+$route['print/member/(:any)'] = "PrintController/member/$1";

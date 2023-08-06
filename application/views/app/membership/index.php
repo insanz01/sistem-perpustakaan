@@ -49,6 +49,7 @@
                           <td><?= $membership['alamat'] ?></td>
                           <td><?= $membership['email'] ?></td>
                           <td>
+                            <a href="<?= base_url('print/member/') . $membership['id'] ?>" class="badge badge-sm badge-primary badge-pill">riwayat</a>
                             <a href="<?= base_url('membership/edit/') . $membership['id'] ?>" class="badge badge-sm badge-info badge-pill">edit</a>
                             <a href="#!" data-toggle="modal" data-target="#hapusModal" class="badge badge-sm badge-danger badge-pill" onclick="hapusData(this)" data-id="<?= $membership['id'] ?>">hapus</a>
                           </td>

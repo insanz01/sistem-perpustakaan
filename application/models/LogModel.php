@@ -72,6 +72,16 @@ class LogModel extends CI_Model
     return $this->db->insert("log_buku_kembali", $data_kembali);
   }
 
+  public function get_all_riwayat_member($id) {
+    $query = "SELECT b.id, b.kode_buku, b.ISBN, b.judul, b.deskripsi, b.gambar, b.penerbit, b.penulis, lbk.terlambat, lbj.created_at FROM log_buku_pinjam lbj JOIN membership m ON lbj.kode_member = m.kode_member LEFT JOIN log_buku_kembali lbk ON lbk.log_buku_pinjam_id = lbj.id JOIN buku b ON b.kode_buku = lbk.kode_buku WHERE m.id = $id";
+
+    return $this->db->query($query)->result_array();
+  }
+
+  public function get_member_info($id) {
+    return $this->db->get_where("membership", ["id" => $id])->row_array();
+  }
+
   public function get_all_log_kembali() {
     $query = "SELECT log_buku_kembali.id, buku.kode_buku, buku.ISBN, buku.judul, membership.kode_member, membership.nama_lengkap, log_buku_kembali.terlambat, log_buku_kembali.created_at FROM log_buku_kembali JOIN buku ON log_buku_kembali.kode_buku = buku.kode_buku JOIN membership ON log_buku_kembali.kode_member = membership.kode_member;";
 

@@ -17,6 +17,26 @@ class PrintController extends CI_Controller {
     $this->load->view('templates/panel/footer');
   }
 
+  public function member($id) {
+    $all_laporan = $this->log_m->get_all_riwayat_member($id);
+
+    $member = $this->log_m->get_member_info($id);
+
+    // if($filter['filter_awal'] && $filter['filter_akhir']) {
+    //   $all_laporan = $this->log_m->get_all_log_kembali_filter($filter);
+    // }
+
+    $filter['filter_awal'] = null;
+    $filter['filter_akhir'] = null;
+
+    $data['filter'] = $filter;
+    $data['all_laporan'] = $all_laporan;
+    $data['member'] = $member;
+
+    $filename = "app/print/riwayat_pinjam_member";
+    $this->load->view($filename, $data);
+  }
+
   public function print() {
     $filter = [
       "filter_awal" => $this->input->post("tanggal_mulai"),
