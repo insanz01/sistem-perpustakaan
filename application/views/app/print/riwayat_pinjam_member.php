@@ -81,7 +81,7 @@
               <td><?= $laporan['judul'] ?></td>
               <td><?= $laporan['penerbit'] ?></td>
               <td><?= $laporan['penulis'] ?></td>
-              <td><?= $laporan['status'] ?></td>
+              <td><?= 'Dikembalikan' ?></td>
               <td>
                 <?php if($laporan['terlambat']): ?>
                   Terlambat
