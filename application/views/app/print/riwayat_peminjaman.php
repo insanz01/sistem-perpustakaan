@@ -42,8 +42,8 @@
             </tr>
             <tr>
               <td>
-                Filter : 
                 <?php if($filter['filter_awal'] != null && $filter['filter_akhir'] != null): ?>
+                  Filter : 
                   <?= date('d M Y', strtotime($filter['filter_awal'])) . " - " . date('d M Y', strtotime($filter['filter_akhir'])) ?> / Rentang Tanggal / Riwayat Peminjaman
                 <?php endif; ?>
               </td>

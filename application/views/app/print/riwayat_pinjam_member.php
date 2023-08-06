@@ -8,7 +8,9 @@
     <!-- Bootstrap CSS -->
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.6.2/dist/css/bootstrap.min.css" integrity="sha384-xOolHFLEh07PJGoPkLv1IbcEPTNtaed2xpHsD9ESMhqIYd0nLMwNLD69Npy4HI+N" crossorigin="anonymous">
 
-    <title>Buku Tamu</title>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/4.3.0/chart.min.js" integrity="sha512-mlz/Fs1VtBou2TrUkGzX4VoGvybkD9nkeXWJm3rle0DPHssYYx4j+8kIS15T78ttGfmOjH0lLaBXGcShaVkdkg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script> -->
+
+    <title>Laporan Riwayat Member</title>
   </head>
   <body>
   <div class="container my-5 py-5">
@@ -32,7 +34,7 @@
           <table style="border: 0; width: 100%">
             <tr>
               <td>Cetak : (<?= $this->session->userdata("SESS_SIPERPUS_USERNAME") ?>) ((<?= $this->session->userdata("SESS_SIPERPUS_NAME") ?>))</td>
-              <td align="right">Tanggal Cetak : <?= date("d M Y", time()) ?></td>
+              <td align="right">Kode Member : <?= $member['kode_member'] ?></td>
             </tr>
             <tr>
               <td></td>
@@ -42,37 +44,57 @@
               <td>
                 <?php if($filter['filter_awal'] != null && $filter['filter_akhir'] != null): ?>
                   Filter : 
-                  <?= date('d M Y', strtotime($filter['filter_awal'])) . " - " . date('d M Y', strtotime($filter['filter_akhir'])) ?> / Rentang Tanggal / Buku Tamu
+                  <?= date('d M Y', strtotime($filter['filter_awal'])) . " - " . date('d M Y', strtotime($filter['filter_akhir'])) ?> / Rentang Tanggal / Riwayat Peminjaman
                 <?php endif; ?>
               </td>
+              <td align="right">Tanggal Cetak : <?= date("d M Y", time()) ?></td>
+            </tr>
+            <tr>
+              <td></td>
+              <td></td>
+            </tr>
+            <tr>
+              <td align="right">Nama Member : <?= $member['nama_lengkap'] ?></td>
               <td></td>
             </tr>
           </table>
         </div>
       </div>
 
-      <h3 class="text-center mb-2">LAPORAN BUKU TAMU</h3>
+      <h3 class="text-center mb-2">LAPORAN RIWAYAT PEMINJAMAN</h3>
       <table class="table table-bordered">
         <thead>
           <th>#</th>
-          <th>Nama Pengunjung</th>
-          <th>Profesi</th>
-          <th>Instansi</th>
-          <th>Tanggal CheckIn</th>
+          <th>Tanggal</th>
+          <th>Judul Buku</th>
+          <th>Penerbit</th>
+          <th>Penulis</th>
+          <th>Tahun</th>
+          <th>Status Peminjaman</th>
+          <th>Terlambat</th>
         </thead>
         <tbody>
           <?php $nomor = 1; ?>
           <?php foreach($all_laporan as $laporan): ?>
             <tr>
               <td><?= $nomor++ ?></td>
-              <td><?= $laporan['nama'] ?></td>
-              <td><?= $laporan['profesi'] ?></td>
-              <td><?= $laporan['instansi'] ?></td>
-              <td><?= $laporan['created_at'] ?></td>
+              <td><?= $laporan['kode_buku'] ?></td>
+              <td><?= $laporan['judul'] ?></td>
+              <td><?= $laporan['penerbit'] ?></td>
+              <td><?= $laporan['penulis'] ?></td>
+              <td><?= $laporan['tahun'] ?></td>
+              <td><?= $laporan['status'] ?></td>
+              <td><?= $laporan['terlambat'] ?></td>
             </tr>
           <?php endforeach; ?>
         </tbody>
       </table>
+
+      <div class="row">
+        <div class="col-12">
+          <canvas id="line-chart"></canvas>
+        </div>
+      </div>
       
       <br>
       <div style="text-align: center; display: inline-block; float: right;">
@@ -94,9 +116,40 @@
 
     <!-- Optional JavaScript; choose one of the two! -->
 
+    <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
     <script>
+      const lineChart = () => {
+        const labels = ["Jan", "Feb", "Mar", "Apr", "Mei", "Jun", "Jul", "Agu", "Sep", "Okt", "Nop", "Des"];
+        const data = {
+          labels: labels,
+          datasets: [{
+            label: 'Riwayat Peminjaman',
+            data: [65, 59, 80, 81, 56, 55, 40, 41, 54, 12, 30, 45],
+            fill: false,
+            borderColor: 'rgb(75, 192, 192)',
+            tension: 0.1
+          }]
+        };
+
+        const config = {
+          type: 'line',
+          data: data,
+        };
+
+        console.log(config);
+
+        const ctx = document.getElementById('line-chart');
+
+        new Chart(ctx, config)
+      }
+
       window.addEventListener("load", () => {
-        window.print();
+        lineChart();
+
+        setTimeout(() => {
+          window.print();
+        }, 3000);
       });
     </script>
 

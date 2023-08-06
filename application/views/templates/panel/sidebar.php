@@ -13,7 +13,7 @@
         <img src="<?= base_url() ?>assets/image/profile/user.png" class="objectPicture" alt="User Image">
       </div>
       <div class="info">
-        <a href="<?= base_url() ?>" class="d-block"><?= 'Administrator' ?> </a>
+        <a href="<?= base_url() ?>" class="d-block"><?= '(' . $this->session->userdata("SESS_SIPERPUS_NAME") . ') ' . 'Administrator' ?> </a>
       </div>
     </div>
 
