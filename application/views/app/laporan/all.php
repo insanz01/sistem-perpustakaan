@@ -11,7 +11,7 @@
     <div class="container-fluid">
       <div class="row mb-2">
         <div class="col-sm-6">
-          <h1 class="m-0 text-dark">Buku</h1>
+          <h1 class="m-0 text-dark">Laporan</h1>
         </div><!-- /.col -->
         <div class="col-sm-6">
           <!-- <ol class="breadcrumb float-sm-right">
@@ -44,7 +44,7 @@
                         <option value="LOG_PINJAM">Log Peminjaman Buku</option>
                         <option value="LOG_KEMBALI">Log Pengembalian Buku</option>
                         <option value="RIWAYAT_PINJAM">Riwayat Peminjaman</option>
-                        <option value="DAFTAR_MEMBERSHIP">Riwayat Peminjaman</option>
+                        <option value="DAFTAR_MEMBERSHIP">Daftar Membership</option>
                       </select>
                     </div>
                     
