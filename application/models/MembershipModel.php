@@ -61,6 +61,12 @@ class MembershipModel extends CI_Model
     return $this->db->get('membership')->result_array();
   }
 
+  public function get_all_memberships_filter($filter) {
+    $query = "SELECT * FROM membership WHERE (DATE(created_at) BETWEEN $filter[filter_awal] AND $filter[filter_akhir]) OR (DATE(created_at) = $filter[filter_awal]) OR (DATE(created_at) = $filter[filter_akhir])";
+
+    return $this->db->query($query)->result_array();
+  }
+
   public function get_single_membership($id)
   {
     return $this->db->get_where('membership', ['id' => $id])->row_array();

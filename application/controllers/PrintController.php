@@ -7,6 +7,7 @@ class PrintController extends CI_Controller {
     $this->load->model("GuestBookModel", "guest_m");
     $this->load->model("LogModel", "log_m");
     $this->load->model("BookModel", "book_m");
+    $this->load->model("MembershipModel", "member_m");
   }
 
   public function index() {
@@ -131,6 +132,18 @@ class PrintController extends CI_Controller {
         $data['all_laporan'] = $all_laporan;
 
         $filename = "app/print/log_kembali";
+        break;
+      case "DAFTAR_MEMBERSHIP":
+        $all_laporan = $this->member_m->get_all_memberships();
+
+        if($filter['filter_awal'] && $filter['filter_akhir']) {
+          $all_laporan = $this->member_m->get_all_memberships_filter($filter);
+        }
+        
+        $data['filter'] = $filter;
+        $data['all_laporan'] = $all_laporan;
+
+        $filename = "app/print/daftar_member";
         break;
     }
 

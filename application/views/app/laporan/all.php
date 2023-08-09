@@ -44,6 +44,7 @@
                         <option value="LOG_PINJAM">Log Peminjaman Buku</option>
                         <option value="LOG_KEMBALI">Log Pengembalian Buku</option>
                         <option value="RIWAYAT_PINJAM">Riwayat Peminjaman</option>
+                        <option value="DAFTAR_MEMBERSHIP">Riwayat Peminjaman</option>
                       </select>
                     </div>
                     

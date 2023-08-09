@@ -39,6 +39,7 @@
                       <th>Gambar</th>
                       <th>Penulis</th>
                       <th>Penerbit</th>
+                      <th>QR</th>
                       <th>Aksi</th>
                     </thead>
                     <tbody>
@@ -50,10 +51,13 @@
                           <td><?= $book['ISBN'] ?></td>
                           <td><?= $book['judul'] ?></td>
                           <td>
-                            <img src="<?= base_url('uploads/') . $book['gambar'] ?>" style="width: 150px">
+                            <img src="<?= base_url('uploads/') . $book['gambar'] ?>" style="width: 120px">
                           </td>
                           <td><?= $book['penulis'] ?></td>
                           <td><?= $book['penerbit'] ?></td>
+                          <td>
+                          <img src="https://api.qrserver.com/v1/create-qr-code/?size=100x100&data=<?= $book['kode_buku'] . ';' . $book['ISBN'] . ';' . $book['judul'] . ';' . $book['penulis'] . ';' . $book['penerbit'] . ';'   ?>" alt="BUKU QR">
+                          </td>
                           <td>
                             <a href="<?= base_url('buku/edit/') . $book['id'] ?>" class="badge badge-sm badge-info badge-pill">edit</a>
                             <a href="#!" data-toggle="modal" data-target="#hapusModal" class="badge badge-sm badge-danger badge-pill" onclick="hapusData(this)" data-id="<?= $book['id'] ?>">hapus</a>
