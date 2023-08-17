@@ -43,6 +43,13 @@ class BookModel extends CI_Model
     return $this->db->get('buku')->result_array();
   }
 
+  public function get_all_books_filter($filter)
+  {
+    $query = "SELECT * FROM buku WHERE (DATE(created_at) BETWEEN $filter[filter_awal] AND $filter[filter_akhir]) OR (DATE(created_at) = $filter[filter_awal]) OR (DATE(created_at) = $filter[filter_akhir])";
+
+    return $this->db->query($query)->result_array();
+  }
+
   public function get_single_book($id)
   {
     return $this->db->get_where('buku', ['id' => $id])->row_array();

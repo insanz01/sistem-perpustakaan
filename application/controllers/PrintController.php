@@ -145,6 +145,18 @@ class PrintController extends CI_Controller {
 
         $filename = "app/print/daftar_member";
         break;
+      case "BUKU_PUSTAKA":
+        $all_laporan = $this->book_m->get_all_books();
+
+        if($filter['filter_awal'] && $filter['filter_akhir']) {
+          $all_laporan = $this->book_m->get_all_books_filter($filter);
+        }
+        
+        $data['filter'] = $filter;
+        $data['all_laporan'] = $all_laporan;
+
+        $filename = "app/print/buku_pustaka";
+        break;
     }
 
     $this->load->view($filename, $data);

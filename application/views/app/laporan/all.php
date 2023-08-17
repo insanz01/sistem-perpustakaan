@@ -41,10 +41,11 @@
                         <option value="BUKU_POPULER">Buku Populer</option>
                         <option value="BUKU_TAMU">Buku Tamu</option>
                         <option value="BUKU_TAMU_MEMBER">Buku Tamu Member</option>
+                        <option value="BUKU_PUSTAKA">Buku Pustaka</option>
                         <option value="LOG_PINJAM">Log Peminjaman Buku</option>
                         <option value="LOG_KEMBALI">Log Pengembalian Buku</option>
                         <option value="RIWAYAT_PINJAM">Riwayat Peminjaman</option>
-                        <option value="DAFTAR_MEMBERSHIP">Daftar Membership</option>
+                        <option value="DAFTAR_MEMBERSHIP">Data Membership</option>
                       </select>
                     </div>
                     
