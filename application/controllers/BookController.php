@@ -52,7 +52,9 @@ class BookController extends CI_Controller
       'judul' => $this->input->post('judul'),
       'deskripsi' => $this->input->post('deskripsi'),
       'penulis' => $this->input->post('penulis'),
-      'penerbit' => $this->input->post('penerbit')
+      'penerbit' => $this->input->post('penerbit'),
+      'lemari' => $this->input->post('lemari'),
+      'rak' => $this->input->post('rak')
     ];
 
     $config['upload_path']          = './uploads/';
@@ -105,11 +107,13 @@ class BookController extends CI_Controller
       'ISBN' => $this->input->post("ISBN"),
       'judul' => $this->input->post("judul"),
       'deskripsi' => $this->input->post("deskripsi"),
-      'penulis' => $this->input->post("penulis")
+      'penulis' => $this->input->post("penulis"),
+      'lemari' => $this->input->post('lemari'),
+      'rak' => $this->input->post('rak')
     ];
 
     $config['upload_path']          = './uploads/';
-    $config['allowed_types']        = 'gif|jpg|png';
+    $config['allowed_types']        = 'gif|jpg|png|jpeg';
     // $config['max_size']             = 100;
     // $config['max_width']            = 1024;
     // $config['max_height']           = 768;
