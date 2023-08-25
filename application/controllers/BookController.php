@@ -108,6 +108,7 @@ class BookController extends CI_Controller
       'judul' => $this->input->post("judul"),
       'deskripsi' => $this->input->post("deskripsi"),
       'penulis' => $this->input->post("penulis"),
+      'penerbit' => $this->input->post("penerbit"),
       'lemari' => $this->input->post('lemari'),
       'rak' => $this->input->post('rak')
     ];
