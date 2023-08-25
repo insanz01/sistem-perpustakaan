@@ -139,7 +139,7 @@ class PrintController extends CI_Controller {
         if($filter['filter_awal'] && $filter['filter_akhir']) {
           $all_laporan = $this->member_m->get_all_memberships_filter($filter);
         }
-        
+
         $data['filter'] = $filter;
         $data['all_laporan'] = $all_laporan;
 
